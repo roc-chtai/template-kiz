@@ -217,33 +217,59 @@
       </div>
     </nav>
   </header>
+
   <div class="main-wrapper home">
+    <div id="slide-wrapper">
+    <div id="slide-display">
+        <div>
+                                        
+            <link rel="stylesheet" type="text/css" href="https://donhi.com.tw/modules/tadtools/ResponsiveSlides/reset.css">
+            <link rel="stylesheet" type="text/css" href="https://donhi.com.tw/modules/tadtools/ResponsiveSlides/responsiveslides.css">
+            
+            <script language="javascript" type="text/javascript" src="https://donhi.com.tw/modules/tadtools/ResponsiveSlides/responsiveslides.js"></script>
+
+            <script type="text/javascript">
+                $(document).ready( function(){
+                    jQuery('#SRhPli').responsiveSlides({
+                        auto: true,
+                        pager: false,
+                        nav: 0,
+                        timeout: 5000,
+                        pause: true,
+                        pauseControls: true,
+                        namespace: 'callbacks'
+                    });
+                });
+            </script>
+            
+        <div class="callbacks">
+            <ul class="rslides" id="SRhPli" style="margin-top: px;">
+                
+                <li>
+                    <a href="https://donhi.com.tw"><img src="https://donhi.com.tw/uploads/tad_themes/donhi2025/slide/slide_13_1_g1n.jpg" alt="slider image 1039"></a>
+                    <a href="https://donhi.com.tw">
+            <div class="caption">
+                <div style="font-size:1.2em;color:yellow;font-weight:bold;"></div>
+                <div style="font-size:1em;">端午節優惠</div>
+            </div>
+            <div class="caption_txt">
+                <div style="font-size:1.2em;color:yellow;font-weight:bold;"></div>
+                <div style="font-size:1em;">端午節優惠</div>
+            </div></a>
+                </li>
+            
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+                                                </div>
+    </div>
+</div>
   </div>
 
 <!-- ====================================
 ———	FOOTER
 ===================================== -->
 <footer class="footer-bg-img">
-  <!-- Footer Color Bar -->
-  <div class="color-bar">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col color-bar bg-warning"></div>
-        <div class="col color-bar bg-danger"></div>
-        <div class="col color-bar bg-success"></div>
-        <div class="col color-bar bg-info"></div>
-        <div class="col color-bar bg-purple"></div>
-        <div class="col color-bar bg-pink"></div>
-        <div class="col color-bar bg-warning d-none d-md-block"></div>
-        <div class="col color-bar bg-danger d-none d-md-block"></div>
-        <div class="col color-bar bg-success d-none d-md-block"></div>
-        <div class="col color-bar bg-info d-none d-md-block"></div>
-        <div class="col color-bar bg-purple d-none d-md-block"></div>
-        <div class="col color-bar bg-pink d-none d-md-block"></div>
-      </div>
-    </div>
-  </div>
-
   <div class="pt-8 pb-7  bg-repeat" style="background-image: url(assets/img/background/footer-bg-img-1.png);">
     <div class="container">
       <div class="row">
