@@ -15662,7 +15662,10 @@ a {
   border-right-color: #b5d56a;
 }
 .nav-item.bg-success .dropdown-menu li:first-child {
-  color: #b5d56a;
+    color: #657a32;
+}
+.nav-item.bg-primary .dropdown-menu li:first-child {
+    color: #8b8539;
 }
 
 .nav-item.bg-info {
