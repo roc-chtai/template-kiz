@@ -15489,12 +15489,12 @@ a {
 .dropdown-menu.row.show .list-unstyled li a {
   color: #666;
 }
-.dropdown-menu.row.show .list-unstyled li:first-child {
+.dropdown-menu.row.show > .col-12 > .list-unstyled > li:first-child  {
   padding-left: 0.8125rem;
   font-weight: 600;
 }
 @media (min-width: 768px) {
-  .dropdown-menu.row.show .list-unstyled li:first-child {
+  .dropdown-menu.row.show > .col-12 > .list-unstyled > li:first-child {
     margin-bottom: 0.625rem;
     font-family: "Dosis", sans-serif;
     font-size: 1.2rem;
