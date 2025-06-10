@@ -15213,7 +15213,7 @@ a {
   }
 }
 @media (min-width: 768px) {
-  .navbar-expand-lg .dropdown-menu.row.show .list-unstyled {
+  .navbar-expand-lg .dropdown-menu.row.show .list-unstyled li:first-child {
     font-size: 0.875rem;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
@@ -15221,7 +15221,7 @@ a {
   }
 }
 @media (min-width: 992px) {
-  .navbar-expand-lg .dropdown-menu.row.show .list-unstyled {
+  .navbar-expand-lg .dropdown-menu.row.show .list-unstyled li:first-child {
     font-family: "Dosis", sans-serif;
     font-size: 1.3rem;
     font-weight: 700;
@@ -15296,7 +15296,7 @@ a {
 .navbar-expand-lg .nav-item.bg-success .dropdown-menu li .sub-menu:after {
   border-right-color: #b5d56a;
 }
-.navbar-expand-lg .nav-item.bg-success .dropdown-menu {
+.navbar-expand-lg .nav-item.bg-success .dropdown-menu li:first-child {
   color: #b59958;
 }
 .navbar-expand-lg .nav-item.bg-info {
@@ -15324,7 +15324,7 @@ a {
 .navbar-expand-lg .nav-item.bg-info .dropdown-menu li .sub-menu:after {
   border-right-color: #84bed6;
 }
-.navbar-expand-lg .nav-item.bg-info .dropdown-menu {
+.navbar-expand-lg .nav-item.bg-info .dropdown-menu li:first-child {
   color: #84bed6;
 }
 .navbar-expand-lg .nav-item.bg-info {
@@ -15352,7 +15352,7 @@ a {
 .navbar-expand-lg .nav-item.bg-info .dropdown-menu li .sub-menu:after {
   border-right-color: #84bed6;
 }
-.navbar-expand-lg .nav-item.bg-info .dropdown-menu {
+.navbar-expand-lg .nav-item.bg-info .dropdown-menu li:first-child {
   color: #84bed6;
 }
 .navbar-expand-lg .nav-item.bg-purple {
@@ -15380,7 +15380,7 @@ a {
 .navbar-expand-lg .nav-item.bg-purple .dropdown-menu li .sub-menu:after {
   border-right-color: #a597e7;
 }
-.navbar-expand-lg .nav-item.bg-purple .dropdown-menu  {
+.navbar-expand-lg .nav-item.bg-purple .dropdown-menu li:first-child {
   color: #a597e7;
 }
 .navbar-expand-lg .nav-item.bg-pink {
@@ -15408,7 +15408,7 @@ a {
 .navbar-expand-lg .nav-item.bg-pink .dropdown-menu li .sub-menu:after {
   border-right-color: #ea77ad;
 }
-.navbar-expand-lg .nav-item.bg-pink .dropdown-menu  {
+.navbar-expand-lg .nav-item.bg-pink .dropdown-menu li:first-child {
   color: #ea77ad;
 }
 
@@ -15488,12 +15488,12 @@ a {
 .dropdown-menu.row.show .list-unstyled li a {
   color: #666;
 }
-.dropdown-menu.row.show .list-unstyled  {
+.dropdown-menu.row.show .list-unstyled li:first-child {
   padding-left: 0.8125rem;
   font-weight: 600;
 }
 @media (min-width: 768px) {
-  .dropdown-menu.row.show .list-unstyled  {
+  .dropdown-menu.row.show .list-unstyled li:first-child {
     margin-bottom: 0.625rem;
     font-family: "Dosis", sans-serif;
     font-size: 1.2rem;
@@ -15526,14 +15526,14 @@ a {
 .dropdown-menu.row.show.components .list-unstyled {
   position: relative;
 }
-.dropdown-menu.row.show.components .list-unstyled  {
+.dropdown-menu.row.show.components .list-unstyled li:first-child {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
   padding-left: 0;
   font-size: 0.875rem;
 }
 @media (min-width: 768px) {
-  .dropdown-menu.row.show.components .list-unstyled  {
+  .dropdown-menu.row.show.components .list-unstyled li:first-child {
     margin-bottom: 0;
   }
 }
@@ -15661,10 +15661,10 @@ a {
 .nav-item.bg-success .dropdown-menu li .sub-menu:after {
   border-right-color: #b5d56a;
 }
-.nav-item.bg-success .dropdown-menu  {
+.nav-item.bg-success .dropdown-menu li:first-child {
     color: #657a32;
 }
-.nav-item.bg-primary .dropdown-menu  {
+.nav-item.bg-primary .dropdown-menu li:first-child {
     color: #ad945a;
 }
 
@@ -15701,7 +15701,7 @@ a {
 .nav-item.bg-info .dropdown-menu li .sub-menu:after {
   border-right-color: #84bed6;
 }
-.nav-item.bg-info .dropdown-menu  {
+.nav-item.bg-info .dropdown-menu li:first-child {
   color: #84bed6;
 }
 
@@ -15738,7 +15738,7 @@ a {
 .nav-item.bg-purple .dropdown-menu li .sub-menu:after {
   border-right-color: #a597e7;
 }
-.nav-item.bg-purple .dropdown-menu  {
+.nav-item.bg-purple .dropdown-menu li:first-child {
   color: #a597e7;
 }
 
@@ -15775,7 +15775,7 @@ a {
 .nav-item.bg-pink .dropdown-menu li .sub-menu:after {
   border-right-color: #ea77ad;
 }
-.nav-item.bg-pink .dropdown-menu  {
+.nav-item.bg-pink .dropdown-menu li:first-child {
   color: #ea77ad;
 }
 
