@@ -14871,6 +14871,7 @@ a {
   padding-left: 1.25rem;
   margin-left: 1.53rem;
   position: relative;
+  z-index: 1000;
 }
 @media (min-width: 768px) {
   .navbar-nav .dropdown .dropdown-menu .sub-menu {
