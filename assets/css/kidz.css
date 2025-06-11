@@ -16992,36 +16992,31 @@ button:focus,
   height: 21px;
   line-height: 19px;
 }
-/* 容器*/
-.scrolling {
-  position: fixed; 
-  bottom: 20px; 
-  right: 20px; 
-  z-index: 1000;
-}
-.icon-header {
-  width: 40px;  
-  height: 40px;  
-  border-radius: 50%;  
-  color: white;  
-  text-align: center; 
-  line-height: 40px; 
-  font-size: 20px;  
-  z-index: 1000;  
-}
 
+.icon-header {
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 0.31rem;
+  border-radius: 50%;
+}
+@media (min-width: 768px) {
+  .icon-header {
+    width: 21px;
+    height: 21px;
+    line-height: 19px;
+  }
+}
 .icon-header i {
-  font-size: 20px;
+  font-size: 11px;
   color: #fff;
 }
-
-/* 會員文字樣式 */
-.member-text {
-  font-size: 12px; 
-  color: #333;  
-  text-align: center;  
-  display: block; 
-  margin-top: 5px; 
+@media (min-width: 768px) {
+  .icon-header i {
+    font-size: 0.81rem;
+  }
 }
 
 /* Icon Small */
@@ -17423,7 +17418,7 @@ input.focus {
   -khtml-opacity: 0;
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  z-index: 1000;
+  z-index: 10;
   display: block;
 }
 
