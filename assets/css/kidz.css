@@ -17425,6 +17425,13 @@ input.focus {
   .back-to-top {
     display: block;
   }
+ @media (max-width: 767px) {
+  #back-to-top {
+    display: block !important; /* 強制顯示 */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
 }
 .back-to-top i {
   color: #fff;
