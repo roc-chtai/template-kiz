@@ -425,8 +425,11 @@
 });
 
 $('.scrollup').click(function(){
-  $('html, body').animate({ scrollTop: 0 }, 500);
-  return false;
+  // 滾動到 .top-bar 元素的位置
+  $('html, body').animate({
+    scrollTop: $('.bg-danger.top-bar').offset().top
+  }, 500);  // 設定動畫時間為 500 毫秒
+  return false;  // 防止默認行為
 });
 
 
