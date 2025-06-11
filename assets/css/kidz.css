@@ -16993,7 +16993,6 @@ button:focus,
   line-height: 19px;
 }
 
-/* 會員圖示樣式 */
 .icon-header {
   width: 18px;
   height: 18px;
@@ -17002,23 +17001,14 @@ button:focus,
   text-align: center;
   margin-right: 0.31rem;
   border-radius: 50%;
-  position: relative;  /* 讓我們可以為下面的文字做定位 */
 }
 
-/* 會員圖示內的字型設定 */
 .icon-header i {
   font-size: 11px;
   color: #fff;
 }
 
-/* 顯示“會員”文字，位於圖示下方 */
-.member-text {
-  font-size: 12px;  /* 設定文字大小 */
-  color: #333;  /* 文字顏色 */
-  text-align: center;  /* 讓文字置中 */
-  display: block;  /* 使文字顯示在新行 */
-  margin-top: 5px;  /* 設定文字和圖示之間的間距 */
-}
+
 
 /* Icon Small */
 .icon-small {
