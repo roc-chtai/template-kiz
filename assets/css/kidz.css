@@ -17421,11 +17421,7 @@ input.focus {
   z-index: 10;
   display: none;
 }
-@media (min-width: 768px) {
-  .back-to-top {
-    display: block;
-  }
-}
+
 .back-to-top i {
   color: #fff;
 }
