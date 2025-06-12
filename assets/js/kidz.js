@@ -270,22 +270,7 @@
     });
   }
 
-  /*======== 9. BACK TO TOP ========*/
-  $(document).ready(function () {
-    $(window).scroll(function () {
-      if ($(this).scrollTop() > 100) {
-        $('#back-to-top').css({
-          'opacity': '1',
-          'visibility': 'visible'
-        });
-      } else {
-        $('#back-to-top').css({
-          'opacity': '0',
-          'visibility': 'hidden'
-        });
-      }
-    });
-  });
+ 
 
   //============================== ISOTOPE =========================
     // init Isotope
@@ -414,23 +399,6 @@
       }
     });
   }
-
-// scrollup
-  $(window).scroll(function(){
-  if ($(this).scrollTop() > 100) {
-    $('.scrollup').fadeIn();
-  } else {
-    $('.scrollup').fadeOut();
-  }
-});
-
-$('.scrollup').click(function(){
-  // 滾動到 .top-bar 元素的位置
-  $('html, body').animate({
-    scrollTop: $('.bg-danger.top-bar').offset().top
-  }, 500);  // 設定動畫時間為 500 毫秒
-  return false;  // 防止默認行為
-});
 
 
   // element-right-sidebar
@@ -609,43 +577,110 @@ $('.scrollup').click(function(){
       sliderValue[handle].innerHTML = '$' + Math.floor(values[handle]);
     });
   }
+	
+ /*======== 9. BACK TO TOP ========*/
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+        $('#back-to-top').css({
+          'opacity': '1',
+          'visibility': 'visible'
+        });
+      } else {
+        $('#back-to-top').css({
+          'opacity': '0',
+          'visibility': 'hidden'
+        });
+      }
+    });
+  });
 
 	
+// scrollup
+  $(window).scroll(function(){
+  if ($(this).scrollTop() > 100) {
+    $('.scrollup').fadeIn();
+  } else {
+    $('.scrollup').fadeOut();
+  }
+});
+
+$('.scrollup').click(function(){
+  // 滾動到 .top-bar 元素的位置
+  $('html, body').animate({
+    scrollTop: $('.bg-danger.top-bar').offset().top
+  }, 500);  // 設定動畫時間為 500 毫秒
+  return false;  // 防止默認行為
+});
+
+
 // 會員
-function adjustMemberAndTop(isInitialLoad = false) {
+function iconInitOnLoad() {
   var memberBtn = document.getElementById('member-float');
   var backTop = document.getElementById('back-to-top');
-  if (!memberBtn || !backTop) return;
+  if (!memberBtn) return;
 
-  var atTop = (window.scrollY === 0);
-
-  if (atTop) {
-    // 頂端
-    memberBtn.classList.remove('bounce');
+  if (window.scrollY === 0) {
+    // 頂端：20px，TOP隱藏
+    memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
-
-    backTop.style.opacity = '0';
+    if (backTop) backTop.style.opacity = '0';
   } else {
-    // 離開頂端
+    // 非頂端：75px，TOP隱藏/顯示你自理
+    memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
-    memberBtn.classList.remove('bounce');
-    void memberBtn.offsetWidth; // 強制重播動畫
-    memberBtn.classList.add('bounce');
+    if (backTop) backTop.style.opacity = '1';
   }
 }
 
-// 頁面載入初始化
-window.addEventListener('DOMContentLoaded', function() {
-  setTimeout(() => adjustMemberAndTop(true), 20);
-});
-window.addEventListener('load', function() {
-  adjustMemberAndTop(true);
-});
+// 滾動時
+function iconOnScroll() {
+  var memberBtn = document.getElementById('member-float');
+  var backTop = document.getElementById('back-to-top');
+  if (!memberBtn) return;
 
-// 滾動事件
-window.addEventListener('scroll', function() {
-  adjustMemberAndTop(false);
+  if (window.scrollY === 0) {
+    // 到頂端：transition滑下
+    memberBtn.classList.remove('bounce-loop');
+    memberBtn.style.bottom = '20px';
+    if (backTop) backTop.style.opacity = '0';
+  } else {
+    // 離開頂端：transition滑上＋彈跳
+    memberBtn.classList.remove('bounce-loop');
+    memberBtn.style.bottom = '75px';
+    if (backTop) backTop.style.opacity = '1';
+
+    // 等 transition 結束再 bounce
+    setTimeout(function() {
+      memberBtn.classList.remove('bounce-loop');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce-loop');
+    }, 160);  // 跟 transition 時間一樣
+  }
+}
+
+// TOP按鈕：滑上＋彈跳
+function iconBounceOnTop() {
+  var memberBtn = document.getElementById('member-float');
+  if (!memberBtn) return;
+  memberBtn.classList.remove('bounce-loop');
+  memberBtn.style.bottom = '75px';
+  setTimeout(function() {
+    memberBtn.classList.remove('bounce-loop');
+    void memberBtn.offsetWidth;
+    memberBtn.classList.add('bounce-loop');
+  }, 160);  // transition完成後再彈
+}
+
+// 載入
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(iconInitOnLoad, 20);
 });
+window.addEventListener('load', iconInitOnLoad);
+
+// 滾動
+window.addEventListener('scroll', iconOnScroll);
+
 
 
 
