@@ -16994,14 +16994,14 @@ button:focus,
 }
 
 @keyframes bounce-up {
-  0%   { transform: translateY(0); }
-  40%  { transform: translateY(-8px);}
-  65%  { transform: translateY(-13px);}
-  80%  { transform: translateY(-5px);}
-  100% { transform: translateY(0); }
+  0%   { transform: translateY(0);}
+  30%  { transform: translateY(-22px);}
+  60%  { transform: translateY(-32px);}
+  80%  { transform: translateY(-9px);}
+  100% { transform: translateY(0);}
 }
 .bounce {
-  animation: bounce-up 0.3s cubic-bezier(.39,.58,.57,1.14);
+  animation: bounce-up 0.35s cubic-bezier(.39,.58,.57,1.14);
 }
 
 .icon-header {
