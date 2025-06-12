@@ -14725,16 +14725,16 @@ a {
   }
 }
 .navbar .navbar-brand img {
-  max-width: 130px;
+  max-width: 220px;
 }
 @media (min-width: 768px) {
   .navbar .navbar-brand img {
-    width: 100%;
+    max-width: 220px;
   }
 }
 @media (min-width: 992px) {
   .navbar .navbar-brand img {
-    max-width: 166px;
+    max-width: 300px;
   }
 }
 .navbar .navbar-toggler {
