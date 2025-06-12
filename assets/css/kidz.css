@@ -16994,24 +16994,36 @@ button:focus,
 }
 
 .icon-header {
-      position: fixed;
-      right: 20px;         
-      bottom: 100px;     
-      width: 50px;
-      height: 50px;
-      background: #4a6782;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-      z-index: 1000;
-      cursor: pointer;
-      border: none;
-      outline: none;
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  width: 50px;
+  height: 50px;
+  background: #4a6782;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+  z-index: 1000;
+  cursor: pointer;
+  border: 2px solid #fff; 
+  outline: none;
+  padding: 0;  
     }
+
+.icon-header:active {
+  background: #355069;
+}
+.icon-header i {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 26px; 
+  line-height: 1;
+}
 
 /* Icon Small */
 .icon-small {
