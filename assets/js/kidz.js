@@ -613,7 +613,7 @@ function iconInitOnLoad() {
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
-  if (window.scrollY <= 100) {
+  if (window.scrollY < 1) {
     // 頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
@@ -630,7 +630,7 @@ function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
 
-  if (window.scrollY <= 100) {
+  if (window.scrollY < 1) {
     // 到頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
