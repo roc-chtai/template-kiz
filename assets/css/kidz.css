@@ -14858,7 +14858,7 @@ a {
 @media (min-width: 768px) {
   .navbar-nav .dropdown .dropdown-menu .dropdown-item,
   .navbar-nav .dropdown .dropdown-menu ul li a {
-    padding: 0.625rem 0.75rem;
+    padding: 0.6rem 1.2rem 0.3rem 0.6rem;
     display: block;
   }
 }
