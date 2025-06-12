@@ -16993,18 +16993,6 @@ button:focus,
   line-height: 19px;
 }
 
-@keyframes bounce-up {
-  0%   { transform: translateY(0);}
-  22%  { transform: translateY(-30px);}   
-  50%  { transform: translateY(-16px);}   
-  70%  { transform: translateY(-7px);}    
-  100% { transform: translateY(0);}
-}
-.bounce {
-  animation: bounce-up 0.35s cubic-bezier(.39,.58,.57,1.14);
-}
-
-
 .icon-header {
   position: fixed;
   right: 20px;
@@ -17022,9 +17010,18 @@ button:focus,
   z-index: 1000;
   cursor: pointer;
   outline: none;
-  transition: bottom 0.4s cubic-bezier(.39,.58,.57,1.14);
   padding: 0;  
     }
+@keyframes bounce-up {
+  0%   { transform: translateY(0);}
+  22%  { transform: translateY(-30px);}   
+  50%  { transform: translateY(-16px);}   
+  70%  { transform: translateY(-7px);}    
+  100% { transform: translateY(0);}
+}
+.bounce {
+  animation: bounce-up 0.35s cubic-bezier(.39,.58,.57,1.14);
+}
 
 .icon-header:active {
   background: #355069;
