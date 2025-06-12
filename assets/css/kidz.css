@@ -16995,14 +16995,15 @@ button:focus,
 
 @keyframes bounce-up {
   0%   { transform: translateY(0);}
-  30%  { transform: translateY(-22px);}
-  60%  { transform: translateY(-32px);}
-  80%  { transform: translateY(-9px);}
+  22%  { transform: translateY(-30px);}   
+  50%  { transform: translateY(-16px);}   
+  70%  { transform: translateY(-7px);}    
   100% { transform: translateY(0);}
 }
 .bounce {
   animation: bounce-up 0.35s cubic-bezier(.39,.58,.57,1.14);
 }
+
 
 .icon-header {
   position: fixed;
