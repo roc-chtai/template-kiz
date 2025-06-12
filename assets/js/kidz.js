@@ -661,9 +661,9 @@ window.addEventListener('scroll', iconOnScroll);
 
 
 
-
   /*======== 11.Wow Js  ========*/
   new WOW().init();
 
   /*======== Google Analytics  ========*/
 
+})(jQuery);
