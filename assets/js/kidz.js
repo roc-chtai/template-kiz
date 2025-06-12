@@ -611,47 +611,46 @@ $('.scrollup').click(function(){
   }
 
 	
-function adjustMemberAndTop(isInitialLoad = false) {
-  var backTop = document.getElementById('back-to-top');
-  var memberBtn = document.getElementById('member-float');
-  if (!backTop || !memberBtn) return;
-
-  // 頁面是否在頂部
-  var atTop = (window.scrollY === 0);
-
-  // 回頂端按鈕顯示/隱藏
-  backTop.style.opacity = atTop ? '0' : '1';
-
-  // 會員 ICON 位置
-  if (atTop) {
-    // 在頂部：ICON 滑下來
-    memberBtn.classList.remove('bounce');
-    memberBtn.style.bottom = '20px';
-  } else {
-    // 不在頂部：ICON 上去，出現時給 bounce
-    if (!isInitialLoad) {
-      memberBtn.style.bottom = '80px';
-      memberBtn.classList.remove('bounce');
-      void memberBtn.offsetWidth;
-      memberBtn.classList.add('bounce');
-    } else {
-      // 載入時如果就在底下，直接設定，不需要 bounce
-      memberBtn.style.bottom = '80px';
-      memberBtn.classList.remove('bounce');
-    }
-  }
-}
-
-// 頁面一載入先跑一次
+// 會員
 window.addEventListener('DOMContentLoaded', function() {
-  adjustMemberAndTop(true);
+  var memberBtn = document.getElementById('member-float');
+  if (!memberBtn) return;
+
+  if (window.scrollY !== 0) {
+    // 頁面不在頂部
+    memberBtn.style.bottom = '80px';
+    memberBtn.classList.remove('slide-down', 'bounce');
+  } else {
+    // 頁面在頂部
+    memberBtn.style.bottom = '20px';
+    memberBtn.classList.remove('slide-down', 'bounce');
+  }
 });
-// 滾動時持續判斷
+
+// 滾動動畫
+let lastState = (window.scrollY !== 0);
+
 window.addEventListener('scroll', function() {
-  adjustMemberAndTop(false);
+  var memberBtn = document.getElementById('member-float');
+  if (!memberBtn) return;
+
+  if (window.scrollY !== 0 && !lastState) {
+    // 往上彈
+    memberBtn.classList.remove('slide-down');
+    memberBtn.style.bottom = '80px';
+    memberBtn.classList.remove('bounce');
+    void memberBtn.offsetWidth;
+    memberBtn.classList.add('bounce');
+    lastState = true;
+  }
+  if (window.scrollY === 0 && lastState) {
+    // 滑下來
+    memberBtn.classList.remove('bounce');
+    memberBtn.classList.add('slide-down');
+    memberBtn.style.bottom = '20px';
+    lastState = false;
+  }
 });
-
-
 	
 
   /*======== 11.Wow Js  ========*/
