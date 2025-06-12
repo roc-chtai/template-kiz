@@ -614,29 +614,27 @@ $('.scrollup').click(function(){
 // 會員
 function adjustMemberAndTop(isInitialLoad = false) {
   var memberBtn = document.getElementById('member-float');
-  if (!memberBtn) return;
+  var backTop = document.getElementById('back-to-top');
+  if (!memberBtn || !backTop) return;
 
   var atTop = (window.scrollY === 0);
 
   if (atTop) {
-    // 到頂端
-    if (!isInitialLoad) {
-      memberBtn.style.bottom = '75px';
-      memberBtn.classList.remove('bounce');
-      void memberBtn.offsetWidth;
-      memberBtn.classList.add('bounce');
-    } else {
-      memberBtn.style.bottom = '75px';
-      memberBtn.classList.remove('bounce');
-    }
-  } else {
-    // 離開頂端 → 用 transition 滑下來到 20px
+    // 頂端
     memberBtn.classList.remove('bounce');
     memberBtn.style.bottom = '20px';
+
+    backTop.style.opacity = '0';
+  } else {
+    // 離開頂端
+    memberBtn.style.bottom = '75px';
+    memberBtn.classList.remove('bounce');
+    void memberBtn.offsetWidth; // 強制重播動畫
+    memberBtn.classList.add('bounce');
   }
 }
 
-// 載入初始化
+// 頁面載入初始化
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => adjustMemberAndTop(true), 20);
 });
@@ -648,6 +646,7 @@ window.addEventListener('load', function() {
 window.addEventListener('scroll', function() {
   adjustMemberAndTop(false);
 });
+
 
 
   /*======== 11.Wow Js  ========*/
