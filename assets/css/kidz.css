@@ -17022,6 +17022,8 @@ button:focus,
   cursor: pointer;
   outline: none;
   padding: 0;  
+    transition: bottom 0.36s cubic-bezier(.39,.58,.57,1.14);
+
   }
 .icon-header i {
   display: block;
