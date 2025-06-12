@@ -635,21 +635,26 @@ function iconOnScroll() {
   if (!memberBtn) return;
 
   if (window.scrollY < 1) {
-    // 1. 先跳一次
+    // 到頂端
     memberBtn.classList.remove('bounce-loop');
     void memberBtn.offsetWidth;
     memberBtn.classList.add('bounce-loop');
-    // 2. 跳完後再滑下來
     setTimeout(function() {
       memberBtn.classList.remove('bounce-loop');
       memberBtn.style.bottom = '20px';
-    }, 360); // bounce 動畫時間
+    }, 360);
   } else {
-    // 滾離頂端時直接回到 75px
+    // 離開頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
+    setTimeout(function() {
+      memberBtn.classList.remove('bounce-loop');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce-loop');
+    }, 160); // 等 bottom完再跳
   }
 }
+
 
 
 // 載入
