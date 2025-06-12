@@ -612,47 +612,41 @@ $('.scrollup').click(function(){
 
 	
 // 會員
-window.addEventListener('DOMContentLoaded', function() {
+function adjustMemberAndTop(isInitialLoad = false) {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
 
-  if (window.scrollY === 0) {
-    memberBtn.style.bottom = '20px';
-    memberBtn.classList.remove('bounce');
-    memberBtn.style.transform = 'translateY(0)'; // 保證回來
+  var atTop = (window.scrollY === 0);
+
+  if (atTop) {
+    // 到頂端
+    if (!isInitialLoad) {
+      memberBtn.style.bottom = '75px';
+      memberBtn.classList.remove('bounce');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce');
+    } else {
+      memberBtn.style.bottom = '75px';
+      memberBtn.classList.remove('bounce');
+    }
   } else {
-    memberBtn.style.bottom = '20px';
+    // 離開頂端 → 用 transition 滑下來到 20px
     memberBtn.classList.remove('bounce');
-    memberBtn.style.transform = 'translateY(-75px)'; // 直接上到定位
+    memberBtn.style.bottom = '20px';
   }
+}
+
+// 載入初始化
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => adjustMemberAndTop(true), 20);
+});
+window.addEventListener('load', function() {
+  adjustMemberAndTop(true);
 });
 
-let lastState = (window.scrollY !== 0);
-
+// 滾動事件
 window.addEventListener('scroll', function() {
-  var memberBtn = document.getElementById('member-float');
-  if (!memberBtn) return;
-
-  // 往上彈（從頂部滾下時）
-  if (window.scrollY !== 0 && !lastState) {
-    memberBtn.style.bottom = '20px';
-    memberBtn.classList.remove('bounce');
-    void memberBtn.offsetWidth; // 觸發重播
-    memberBtn.classList.add('bounce');
-    lastState = true;
-  }
-  // 滑下來（回到頂端時）
-  if (window.scrollY === 0 && lastState) {
-    memberBtn.classList.remove('bounce');
-    memberBtn.style.transition = 'bottom 0.36s cubic-bezier(.39,.58,.57,1.14), transform 0.36s cubic-bezier(.39,.58,.57,1.14)';
-    memberBtn.style.bottom = '20px';
-    memberBtn.style.transform = 'translateY(0)';
-    setTimeout(function(){
-      // 避免 transition 影響後續 bounce
-      memberBtn.style.transition = '';
-    }, 400);
-    lastState = false;
-  }
+  adjustMemberAndTop(false);
 });
 
 
