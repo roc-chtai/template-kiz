@@ -16994,14 +16994,13 @@ button:focus,
 }
 
 @keyframes bounce-up {
-  0%   { transform: translateY(0px);}
-  38%  { transform: translateY(-80px);}  /* 一路彈上去 */
-  60%  { transform: translateY(-65px);}  /* 微反彈 */
-  75%  { transform: translateY(-75px);}  /* 定點回彈 */
-  100% { transform: translateY(-75px);}  /* 停在 -75px（高度差）*/
+  0%   { transform: translateY(0);}
+  60%  { transform: translateY(-42px);}
+  75%  { transform: translateY(7px);}
+  100% { transform: translateY(0);}
 }
 .bounce {
-  animation: bounce-up 0.34s cubic-bezier(.39,.58,.57,1.14) forwards;
+  animation: bounce-up 0.36s cubic-bezier(.39,.58,.57,1.14);
 }
 
 .icon-header {
@@ -17022,8 +17021,7 @@ button:focus,
   cursor: pointer;
   outline: none;
   padding: 0;  
-    transition: bottom 0.36s cubic-bezier(.39,.58,.57,1.14);
-
+  transition: bottom 0.36s cubic-bezier(.39,.58,.57,1.14);
   }
 .icon-header i {
   display: block;
