@@ -621,34 +621,30 @@ function iconInitOnLoad() {
   if (!memberBtn) return;
 
   if (window.scrollY <= 100) {
-    // 頂端：20px，TOP隱藏
+    // 頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
     if (backTop) backTop.style.opacity = '0';
   } else {
-    // 非頂端：75px，TOP隱藏/顯示你自理
+    // 非頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
-    if (backTop) backTop.style.opacity = '1';
   }
 }
 
 // 滾動時
 function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
-  var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
   if (window.scrollY <= 100) {
-    // 到頂端：transition滑下
+    // 到頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
-    if (backTop) backTop.style.opacity = '0';
   } else {
-    // 離開頂端：transition滑上＋彈跳
+    // 離開頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
-    if (backTop) backTop.style.opacity = '1';
 
     // 等 transition 結束再 bounce
     setTimeout(function() {
