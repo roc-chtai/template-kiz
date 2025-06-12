@@ -627,16 +627,14 @@ function iconInitOnLoad() {
   }
 }
 
- if (window.scrollY === 0) {
-    // 頂端：20px，TOP隱藏
+ if (window.scrollY < 1) {
+    // 頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
-    if (backTop) backTop.style.opacity = '0';
   } else {
-    // 非頂端：75px，TOP隱藏/顯示你自理
+    // 非頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
-    if (backTop) backTop.style.opacity = '1';
   }
 }
 
