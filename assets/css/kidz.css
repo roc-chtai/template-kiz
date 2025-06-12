@@ -16993,6 +16993,17 @@ button:focus,
   line-height: 19px;
 }
 
+@keyframes bounce-up {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-18px);}
+  65%  { transform: translateY(-24px);}
+  80%  { transform: translateY(-10px);}
+  100% { transform: translateY(0); }
+}
+.bounce {
+  animation: bounce-up 0.6s cubic-bezier(.39,.58,.57,1.14);
+}
+
 .icon-header {
   position: fixed;
   right: 20px;
@@ -17010,6 +17021,7 @@ button:focus,
   z-index: 1000;
   cursor: pointer;
   outline: none;
+  transition: bottom 0.4s cubic-bezier(.39,.58,.57,1.14);
   padding: 0;  
     }
 
