@@ -607,58 +607,6 @@
 
 
 
-// 會員
-function iconInitOnLoad() {
-  var memberBtn = document.getElementById('member-float');
-  var backTop = document.getElementById('back-to-top');
-  if (!memberBtn) return;
-
-  if (window.scrollY <= 100) {
-  if (window.scrollY < 1) {
-    // 頂端
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '20px';
-    if (backTop) backTop.style.opacity = '0';
-  } else {
-    // 非頂端
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '75px';
-  }
-}
-
-// 滾動時
-function iconOnScroll() {
-  var memberBtn = document.getElementById('member-float');
-  if (!memberBtn) return;
-
-  if (window.scrollY <= 100) {
-  if (window.scrollY < 1) {
-    // 到頂端
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '20px';
-  } else {
-    // 離開頂端
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '75px';
-
-    // 等 transition 結束再 bounce
-    setTimeout(function() {
-      memberBtn.classList.remove('bounce-loop');
-      void memberBtn.offsetWidth;
-      memberBtn.classList.add('bounce-loop');
-    }, 160);  // 跟 transition 時間一樣
-  }
-}
-
-// 載入
-window.addEventListener('DOMContentLoaded', function() {
-  setTimeout(iconInitOnLoad, 20);
-});
-window.addEventListener('load', iconInitOnLoad);
-
-// 滾動
-window.addEventListener('scroll', iconOnScroll);
-
 
 
   /*======== 11.Wow Js  ========*/
