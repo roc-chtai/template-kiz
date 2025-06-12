@@ -75,7 +75,7 @@
           style: 'hesperiden',
           hide_onleave: false
         },
-  
+
         bullets: {
           enable: false,
           style: 'hesperiden',
@@ -109,7 +109,7 @@
           style: 'hesperiden',
           hide_onleave: false
         },
-        
+
         bullets: {
           enable: false,
           style: 'hesperiden',
@@ -177,7 +177,7 @@
           style: 'hesperiden',
           hide_onleave: false
         },
-        
+
         bullets: {
           enable: false,
           style: 'hesperiden',
@@ -270,7 +270,7 @@
     });
   }
 
- 
+
 
   //============================== ISOTOPE =========================
     // init Isotope
@@ -526,7 +526,7 @@
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 
- 
+
 
   /*======== 10. SMOOTH SCROLLING TO SECTION ========*/
   $('.scrolling  a[href*="#"]').on('click', function (e) {
@@ -577,7 +577,7 @@
       sliderValue[handle].innerHTML = '$' + Math.floor(values[handle]);
     });
   }
-	
+
  /*======== 9. BACK TO TOP ========*/
   $(document).ready(function () {
     $(window).scroll(function () {
@@ -595,8 +595,8 @@
     });
   });
 
-	
-// scrollup (找不到使用處)
+
+// scrollup
   $(window).scroll(function(){
   if ($(this).scrollTop() > 1) {
     $('.scrollup').fadeIn();
@@ -605,10 +605,6 @@
   }
 });
 
-$('.scrollup').click(function(){
-  $('html, body').animate({ scrollTop: 0 }, 500);
-  return false;
-});
 
 
 // 會員
@@ -617,6 +613,7 @@ function iconInitOnLoad() {
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
+  if (window.scrollY <= 100) {
   if (window.scrollY < 1) {
     // 頂端
     memberBtn.classList.remove('bounce-loop');
@@ -634,17 +631,11 @@ function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
 
+  if (window.scrollY <= 100) {
   if (window.scrollY < 1) {
     // 到頂端
     memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '75px';
-    void memberBtn.offsetWidth;
-    memberBtn.classList.add('bounce-loop');
-    // 等 bounce 播完再平滑滑下來
-    setTimeout(function() {
-      memberBtn.classList.remove('bounce-loop');
-      memberBtn.style.bottom = '20px';
-    }, 360); 
+    memberBtn.style.bottom = '20px';
   } else {
     // 離開頂端
     memberBtn.classList.remove('bounce-loop');
