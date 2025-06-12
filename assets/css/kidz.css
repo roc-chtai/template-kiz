@@ -17004,6 +17004,13 @@ button:focus,
   100% { transform: translateY(0); }
 }
 
+#member-float {
+  position: fixed;
+  right: 20px;
+  bottom: 75px;
+  transition: bottom 0.16s ease;
+}
+
 .icon-header {
   position: fixed;
   right: 20px;
