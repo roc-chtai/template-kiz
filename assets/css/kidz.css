@@ -16994,30 +16994,19 @@ button:focus,
 }
 
 .icon-header {
-  width: 18px;
-  height: 18px;
-  line-height: 16px;
-  display: inline-block;
-  text-align: center;
-  margin-right: 0.31rem;
-  border-radius: 50%;
-}
-@media (min-width: 768px) {
-  .icon-header {
-    width: 21px;
-    height: 21px;
-    line-height: 19px;
-  }
-}
-.icon-header i {
-  font-size: 11px;
-  color: #fff;
-}
-@media (min-width: 768px) {
-  .icon-header i {
-    font-size: 0.81rem;
-  }
-}
+ position: fixed;   /* 固定位置 */
+            bottom: 100px;    
+            right: 20px;      
+            width: 50px;   
+            height: 50px;    
+            color: white;     
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%; 
+            font-size: 18px;  
+            z-index: 1000;  
+            cursor: pointer; 
+        }
 
 /* Icon Small */
 .icon-small {
