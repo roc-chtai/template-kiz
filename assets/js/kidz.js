@@ -667,4 +667,3 @@ window.addEventListener('scroll', iconOnScroll);
 
   /*======== Google Analytics  ========*/
 
-})(jQuery);
