@@ -611,29 +611,44 @@ $('.scrollup').click(function(){
   }
 
 	
-// 假設會員按鈕的 li 有 id="member-float"，回頂端按鈕有 id="back-to-top"
-let lastState = false;
-
-window.addEventListener('scroll', function() {
+function adjustMemberAndTop(isInitialLoad = false) {
   var backTop = document.getElementById('back-to-top');
   var memberBtn = document.getElementById('member-float');
   if (!backTop || !memberBtn) return;
 
-  var nowVisible = window.getComputedStyle(backTop).opacity !== '0';
+  // 頁面是否在頂部
+  var atTop = (window.scrollY === 0);
 
-  if (!lastState && nowVisible) {
-    // 上去：加 bounce 動畫
-    memberBtn.style.bottom = '80px';
-    memberBtn.classList.remove('bounce');
-    void memberBtn.offsetWidth;
-    memberBtn.classList.add('bounce');
-  }
-  if (lastState && !nowVisible) {
-    // 下來：移除 bounce，靠 transition 滑下來
+  // 回頂端按鈕顯示/隱藏
+  backTop.style.opacity = atTop ? '0' : '1';
+
+  // 會員 ICON 位置
+  if (atTop) {
+    // 在頂部：ICON 滑下來
     memberBtn.classList.remove('bounce');
     memberBtn.style.bottom = '20px';
+  } else {
+    // 不在頂部：ICON 上去，出現時給 bounce
+    if (!isInitialLoad) {
+      memberBtn.style.bottom = '80px';
+      memberBtn.classList.remove('bounce');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce');
+    } else {
+      // 載入時如果就在底下，直接設定，不需要 bounce
+      memberBtn.style.bottom = '80px';
+      memberBtn.classList.remove('bounce');
+    }
   }
-  lastState = nowVisible;
+}
+
+// 頁面一載入先跑一次
+window.addEventListener('DOMContentLoaded', function() {
+  adjustMemberAndTop(true);
+});
+// 滾動時持續判斷
+window.addEventListener('scroll', function() {
+  adjustMemberAndTop(false);
 });
 
 
