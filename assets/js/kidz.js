@@ -620,7 +620,7 @@ function iconInitOnLoad() {
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
-  if (window.scrollY === 0) {
+  if (window.scrollY <= 100) {
     // 頂端：20px，TOP隱藏
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
@@ -639,7 +639,7 @@ function iconOnScroll() {
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
-  if (window.scrollY === 0) {
+  if (window.scrollY <= 100) {
     // 到頂端：transition滑下
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
@@ -657,19 +657,6 @@ function iconOnScroll() {
       memberBtn.classList.add('bounce-loop');
     }, 160);  // 跟 transition 時間一樣
   }
-}
-
-// TOP按鈕：滑上＋彈跳
-function iconBounceOnTop() {
-  var memberBtn = document.getElementById('member-float');
-  if (!memberBtn) return;
-  memberBtn.classList.remove('bounce-loop');
-  memberBtn.style.bottom = '75px';
-  setTimeout(function() {
-    memberBtn.classList.remove('bounce-loop');
-    void memberBtn.offsetWidth;
-    memberBtn.classList.add('bounce-loop');
-  }, 160);  // transition完成後再彈
 }
 
 // 載入
