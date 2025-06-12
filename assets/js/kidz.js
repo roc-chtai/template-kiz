@@ -596,7 +596,7 @@
   });
 
 	
-// scrollup
+// scrollup (找不到使用處)
   $(window).scroll(function(){
   if ($(this).scrollTop() > 1) {
     $('.scrollup').fadeIn();
