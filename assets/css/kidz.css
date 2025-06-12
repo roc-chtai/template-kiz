@@ -16997,15 +16997,11 @@ button:focus,
   animation: bounce-loop 0.36s cubic-bezier(.39,.58,.57,1.14);
 }
 
-.bounce-loop {
-  animation: bounce-loop 0.36s cubic-bezier(.39,.58,.57,1.14);
-}
-
 @keyframes bounce-loop {
-  0%   { bottom: 75px; }
-  38%  { bottom: 80px; }
-  68%  { bottom: 73px; }
-  100% { bottom: 75px; }
+  0%   { transform: translateY(0); }
+  38%  { transform: translateY(-8px); }
+  68%  { transform: translateY(3px); }
+  100% { transform: translateY(0); }
 }
 
 .icon-header {
@@ -17026,7 +17022,7 @@ button:focus,
   cursor: pointer;
   outline: none;
   padding: 0;  
-  transition: bottom 0.20s cubic-bezier(.39,.58,.57,1.14);  /* 特別調快 */
+  transition: bottom 0.20s cubic-bezier(.39,.58,.57,1.14); 
   }
 .icon-header i {
   display: block;
