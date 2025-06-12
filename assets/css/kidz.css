@@ -16997,6 +16997,10 @@ button:focus,
   animation: bounce-loop 0.36s cubic-bezier(.39,.58,.57,1.14);
 }
 
+.bounce-loop {
+  animation: bounce-loop 0.36s cubic-bezier(.39,.58,.57,1.14);
+}
+
 @keyframes bounce-loop {
   0%   { bottom: 75px; }
   38%  { bottom: 80px; }
