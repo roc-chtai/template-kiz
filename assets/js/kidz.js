@@ -605,6 +605,13 @@
   }
 });
 
+$('.scrollup').click(function(){
+  // 滾動到 .top-bar 元素的位置
+  $('html, body').animate({
+    scrollTop: $('.bg-danger.top-bar').offset().top
+  }, 500);  // 設定動畫時間為 500 毫秒
+  return false;  // 防止默認行為
+});
 
 
 // 會員
@@ -633,7 +640,14 @@ function iconOnScroll() {
   if (window.scrollY < 1) {
     // 到頂端
     memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '20px';
+    memberBtn.style.bottom = '75px';
+    void memberBtn.offsetWidth;
+    memberBtn.classList.add('bounce-loop');
+    // 等 bounce 播完再平滑滑下來
+    setTimeout(function() {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '20px';
+    }, 360); 
   } else {
     // 離開頂端
     memberBtn.classList.remove('bounce-loop');
