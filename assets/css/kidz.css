@@ -17001,7 +17001,7 @@ button:focus,
   100% { transform: translateY(0); }
 }
 .bounce {
-  animation: bounce-up 0.5s cubic-bezier(.39,.58,.57,1.14);
+  animation: bounce-up 0.3s cubic-bezier(.39,.58,.57,1.14);
 }
 
 .icon-header {
