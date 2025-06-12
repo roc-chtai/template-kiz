@@ -17018,7 +17018,6 @@ button:focus,
   justify-content: center;
   font-size: 22px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.13);
-  transition: bottom 0.36s cubic-bezier(.39,.58,.57,1.14);
   z-index: 1000;
   cursor: pointer;
   outline: none;
