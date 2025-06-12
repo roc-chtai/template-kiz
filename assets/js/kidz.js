@@ -636,15 +636,20 @@ function iconOnScroll() {
 
   if (window.scrollY < 1) {
     // 到頂端
-    memberBtn.classList.remove('bounce-loop');
+memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
     void memberBtn.offsetWidth;
     memberBtn.classList.add('bounce-loop');
     // 等 bounce 播完再平滑滑下來
     setTimeout(function() {
       memberBtn.classList.remove('bounce-loop');
-      memberBtn.style.bottom = '20px';
-    }, 360); 
+      // 讓瀏覽器先刷新（否則 transition 不會觸發）
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          memberBtn.style.bottom = '20px';
+        });
+      });
+    }, 360);  // 跟 bounce-loop 動畫秒數一致
   } else {
     // 離開頂端
     memberBtn.classList.remove('bounce-loop');
