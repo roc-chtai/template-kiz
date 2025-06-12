@@ -610,6 +610,37 @@ $('.scrollup').click(function(){
     });
   }
 
+	
+// 假設會員按鈕的 li 有 id="member-float"，回頂端按鈕有 id="back-to-top"
+let lastState = false; // 上一次 back-to-top 是否顯示
+
+window.addEventListener('scroll', function() {
+  var backTop = document.getElementById('back-to-top');
+  var memberBtn = document.getElementById('member-float');
+  if (!backTop || !memberBtn) return;
+
+  // 判斷 back-to-top 是否可見（根據 opacity）
+  var nowVisible = window.getComputedStyle(backTop).opacity !== '0';
+
+  // 只有「從沒顯示→變顯示」時加 bounce
+  if (!lastState && nowVisible) {
+    memberBtn.style.bottom = '80px';
+    memberBtn.classList.remove('bounce'); // 先移除，確保能重播動畫
+    void memberBtn.offsetWidth;           // 強制重排，才能重播動畫
+    memberBtn.classList.add('bounce');
+  }
+
+  // 只有「從顯示→變沒顯示」時，直接滑下來（不 bounce）
+  if (lastState && !nowVisible) {
+    memberBtn.style.bottom = '20px';
+    memberBtn.classList.remove('bounce');
+  }
+
+  lastState = nowVisible;
+});
+
+	
+
   /*======== 11.Wow Js  ========*/
   new WOW().init();
 
