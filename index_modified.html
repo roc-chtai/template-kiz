@@ -6,9 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tittle</title>
-   <!-- SEO描述（修改這行）-->
   <meta name="description" content="大東海 提供最完整的考試資訊、線上課程與輔導服務">
-  <!-- FB/LINE分享描述 -->
   <meta property="og:description" content="大東海 提供最完整的考試資訊、線上課程與輔導服務">
 
 
@@ -23,7 +21,7 @@
   <link href='assets/plugins/owl-carousel/owl.carousel.min.css' rel='stylesheet' media='screen'>
   <link href='assets/plugins/owl-carousel/owl.theme.default.min.css' rel='stylesheet' media='screen'>
 
-<style>/* 預防寬度問題 */
+<style>/* 預防寬度出事 */
 html, body {
   width: 100% !important;
   max-width: 100% !important;
@@ -73,13 +71,13 @@ html, body {
   <header class="header">
 
     <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-scrollUp navbar-sticky navbar-white">
-      <div class="container">
-        <a class="navbar-brand" href="https://donhi.com.tw">
-          <img class="d-inline-block" src="https://donhi.com.tw/themes/donhi2025/assets/img/logo_donhi.png" alt="大東海官網">
+<nav class="navbar navbar-expand-md navbar-scrollUp navbar-sticky navbar-white" aria-label="主導覽列">
+      <div class="container"> 
+        <a class="navbar-brand" href="https://donhi.com.tw" aria-label="回大東海官網首頁">
+           <img class="d-inline-block" src="https://donhi.com.tw/themes/donhi2025/assets/img/logo_donhi.png" alt="大東海Logo" height="40" />
         </a>
 
-        <button class="navbar-toggler py-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler py-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="展開主選單">
           <i class="fa fa-bars"></i>
         </button>
 
@@ -89,11 +87,11 @@ html, body {
 
               <a class="nav-link dropdown-toggle " href="javascript:void(0)" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="far fa-folder nav-icon" aria-hidden="true"></i>
-                <span>考試資訊</span>
+                <span>最新考情</span>
               </a>
               <div class="dropdown-menu row">
 <div class="col-12 col-md-2">
-  <ul class="list-unstyled">
+  <ul class="list-unstyled" aria-label="最新考情" >
     <li>公職考試</li>
     <li class="dropdown-submenu">
       <a class="" href="#">公務人員考試<i class="fa fa-chevron-right" aria-hidden="true"></i></a>
@@ -387,16 +385,15 @@ html, body {
 
 <!--scrolling-->
 <div class="">
-  <a href="#pageTop" class="back-to-top" id="back-to-top" style="opacity: 1;">
+  <a href="#pageTop" class="back-to-top" id="back-to-top" style="opacity: 1;" aria-label="回頂端">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </a>
 </div>
 
 <!-- 會員按鈕 -->
     <div class="">
-<li class="icon-header" id="member-float"
-    data-bs-toggle="modal" data-bs-target="#modal-login">
-  <i class="fas fa-user" aria-hidden="true"></i>
+<li class="icon-header" id="member-float" data-bs-toggle="modal" data-bs-target="#modal-login" aria-label="會員登入">
+    <i class="fas fa-user" aria-hidden="true"></i>
 </li>
     </div>
 
