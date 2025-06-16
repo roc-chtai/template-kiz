@@ -18732,4 +18732,14 @@ html[dir=rtl] .cart-dropdown .dropdown-menu-end {
     transform: translate3d(0px, 30px, 0px) !important;
   }
 }
+
+/* 補強多層巢狀下拉選單手機展開顯示 */
+.dropdown-menu,
+.sub-menu {
+  display: none;
+}
+.dropdown-menu.show,
+.sub-menu.show {
+  display: block;
+}
 /*# sourceMappingURL=kidz.css.map */
