@@ -14933,6 +14933,24 @@ a {
   opacity: 1;
   z-index: 1000;
 }
+
+@media (max-width: 991px) {
+  .navbar .dropdown-menu,
+  .navbar .sub-menu {
+    position: static;
+    float: none;
+    width: 100%;
+    min-width: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+  .dropdown-submenu > .sub-menu {
+    left: 0;
+    top: 0;
+    margin-top: 0;
+  }
+}
+
 .navbar-nav .dropdown .dropdown-menu i {
   display: none;
 }
