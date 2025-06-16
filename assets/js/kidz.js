@@ -674,20 +674,6 @@ window.addEventListener('scroll', iconOnScroll);
 
   /*======== Google Analytics  ========*/
 
-// 「手機 → 非手機」
-  let lastIsMobile = window.innerWidth <= 991;
 
-  $(window).on('resize', function(){
-    let nowIsMobile = window.innerWidth <= 991;
-    // 手機→桌機/平板
-    if (lastIsMobile && !nowIsMobile) {
-      // 收合漢堡（Bootstrap標準寫法）
-      $('.navbar-collapse').removeClass('show').attr('style','');
-      // 收合所有下拉
-      $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
-      $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
-    }
-    lastIsMobile = nowIsMobile;
-  });
 })(jQuery);
 
