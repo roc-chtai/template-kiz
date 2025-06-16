@@ -718,56 +718,7 @@ window.addEventListener('scroll', iconOnScroll);
         parentLi.toggleClass('show');
       }
     });
-    // 第二層
-    $('.dropdown-submenu > a').off('click').on('click', function(e) {
-      var parentLi = $(this).parent();
-      var menu = parentLi.find('> .sub-menu');
-      if(menu.length){
-        e.preventDefault();
-        e.stopPropagation();
-        menu.toggleClass('show');
-        parentLi.toggleClass('show');
-      }
-    });
-  }
-
-  // 切換行為
-  function initDropdownBehavior() {
-    if (isMobile()) {
-      enableMobileDropdown();
-      $(document).off('click.navclose').on('click.navclose', function(e){
-        if ($(e.target).closest('.navbar-nav .dropdown, .dropdown-menu, .sub-menu').length) {
-          return;
-        }
-        $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
-        $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
-      });
-    } else {
-      enableDesktopDropdown();
-      $(document).off('click.navclose');
-      // 桌機每次進來時強制清空（避免手機殘留）
-      $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
-      $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
-      $('.navbar-collapse').removeClass('show').attr('style','');
-      $('.navbar-toggler').attr('aria-expanded', 'false');
-    }
-  }
-
-  // 只在裝置型態切換時清空（手機→桌機）
-  let lastIsMobile = window.innerWidth <= 991;
-  $(document).ready(initDropdownBehavior);
-  $(window).on('resize', function(){
-    let nowIsMobile = window.innerWidth <= 991;
-    if (lastIsMobile && !nowIsMobile) {
-      // 關掉所有展開
-      $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
-      $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
-      $('.navbar-collapse').removeClass('show').attr('style','');
-      $('.navbar-toggler').attr('aria-expanded', 'false');
-    }
-    lastIsMobile = nowIsMobile;
-    setTimeout(initDropdownBehavior, 120);
-  });
+ 
 
 })(jQuery);
 
