@@ -767,4 +767,3 @@ window.addEventListener('scroll', iconOnScroll);
   });
 
 })(jQuery);
-
