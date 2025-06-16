@@ -41,7 +41,7 @@
   });
 
   /* ======== ALL DROPDOWN ON HOVER======== */
-  if ($(window).width() > 991) {
+   /* if ($(window).width() > 991) {
     $('.navbar-expand-lg .navbar-nav .dropdown').hover(function () {
       $(this).addClass('').find('.dropdown-menu').addClass('show');
     }, function () {
@@ -56,7 +56,7 @@
       $(this).find('.dropdown-menu').removeClass('show');
     });
   }
-
+*/
   /*======== RS-SLIDER ========*/
   var rev_slider_1 = $('#rev_slider_1');
   if (rev_slider_1.length !== 0) {
