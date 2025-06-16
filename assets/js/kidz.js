@@ -694,20 +694,7 @@ window.addEventListener('scroll', iconOnScroll);
       }
     });
     // 巢狀下拉（如 .dropdown-submenu）
-    $('.dropdown-submenu > a').off('click').on('click', function(e) {
-      if(window.innerWidth <= 991) {
-        var $parent = $(this).parent();
-        var $menu = $parent.find('> .sub-menu');
-        if($menu.length) {
-          e.preventDefault();
-          e.stopPropagation();
-          // 關其他，展開自己
-          $('.sub-menu.show, .dropdown-submenu.show').removeClass('show');
-          $menu.toggleClass('show');
-          $parent.toggleClass('show');
-        }
-      }
-    });
+    
   }
 
   // 螢幕寬度有變化就全部收起
