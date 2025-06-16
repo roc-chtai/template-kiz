@@ -610,6 +610,17 @@ $('.scrollup').click(function(){
   return false;
 });
 
+	// 平板/手機下點擊 submenu 不會關掉整個 dropdown，且能展開子選單
+$(document).on('click', '.dropdown-submenu > a', function(e) {
+  if ($(window).width() <= 991) {
+    e.preventDefault();
+    e.stopPropagation();
+    // toggle 顯示 submenu
+    $(this).next('.sub-menu').slideToggle(150);
+    // 如果你想支援多層，可以加 toggle class
+    $(this).parent().toggleClass('open');
+  }
+});
 
 // 會員
 function iconInitOnLoad() {
