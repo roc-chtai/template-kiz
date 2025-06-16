@@ -673,19 +673,6 @@ window.addEventListener('scroll', iconOnScroll);
   new WOW().init();
 
   /*======== Google Analytics  ========*/
-function cleanAllDropdown() {
-  $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
-  $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
-}let lastIsMobile = window.innerWidth <= 991;
-
-$(window).on('resize', function(){
-  let nowIsMobile = window.innerWidth <= 991;
-  if (lastIsMobile !== nowIsMobile) {
-    cleanAllDropdown();
-  }
-  lastIsMobile = nowIsMobile;
-  setTimeout(initDropdownBehavior, 150);
-});
 
 
 
