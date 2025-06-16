@@ -673,7 +673,7 @@ window.addEventListener('scroll', iconOnScroll);
   new WOW().init();
 
   /*======== Google Analytics  ========*/
-
+// 支援手機/平板巢狀下拉（展開/收合，三層）
 $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
   if(window.innerWidth <= 991) {
     var $parent = $(this).parent();
@@ -681,11 +681,9 @@ $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
     if($menu.length) {
       e.preventDefault();
       e.stopPropagation();
-
-      // 收起所有打開的同級
+      // 收起同級
       $parent.siblings('.dropdown.show').removeClass('show')
         .find('.dropdown-menu.show').removeClass('show');
-      // toggle自己
       $menu.toggleClass('show');
       $parent.toggleClass('show');
     }
@@ -699,34 +697,23 @@ $(document).on('click', '.dropdown-submenu > a', function(e) {
     if($menu.length) {
       e.preventDefault();
       e.stopPropagation();
-
       // 收起同級
       $parent.siblings('.dropdown-submenu.show').removeClass('show')
         .find('.sub-menu.show').removeClass('show');
-      // toggle自己
       $menu.toggleClass('show');
       $parent.toggleClass('show');
     }
   }
 });
 
+// 視窗變動時，所有展開收回（包括桌機下拉）
+$(window).on('resize', function(){
+  $('.dropdown-menu.show, .dropdown.show, .sub-menu.show, .dropdown-submenu.show').removeClass('show');
+  $('.navbar-collapse').removeClass('show').attr('style','');
+  $('.navbar-toggler').attr('aria-expanded', 'false');
+});
 
-  // 螢幕寬度有變化就全部收起
-  $(window).on('resize', function(){
-    $('.show').removeClass('show');
-    $('.navbar-collapse').removeClass('show').attr('style','');
-    $('.navbar-toggler').attr('aria-expanded', 'false');
-  });
 
-  // 一開始就掛好點擊事件
-  $(document).ready(function(){
-    enableDropdownClick();
-  });
-
-  // 每次 resize（視窗大小改變）重新掛事件，避免異常
-  $(window).on('resize', function(){
-    enableDropdownClick();
-  });
 
 })(jQuery);
 
