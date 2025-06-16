@@ -675,5 +675,92 @@ window.addEventListener('scroll', iconOnScroll);
   /*======== Google Analytics  ========*/
 
 
+  // 判斷是否為手機/平板
+  function isMobile() { return window.innerWidth <= 991; }
+
+  // 桌機：滑鼠移入展開，移出收合
+  function enableDesktopDropdown() {
+    $('.navbar-nav .dropdown, .dropdown-submenu').off('mouseenter mouseleave click');
+    $('.navbar-nav .dropdown').hover(
+      function () {
+        $(this).addClass('show');
+        $(this).find('> .dropdown-menu').addClass('show');
+      },
+      function () {
+        $(this).removeClass('show');
+        $(this).find('> .dropdown-menu').removeClass('show');
+      }
+    );
+    $('.dropdown-submenu').hover(
+      function () {
+        $(this).addClass('show');
+        $(this).find('> .sub-menu').addClass('show');
+      },
+      function () {
+        $(this).removeClass('show');
+        $(this).find('> .sub-menu').removeClass('show');
+      }
+    );
+  }
+
+  // 手機：點擊展開，再點擊收合
+  function enableMobileDropdown() {
+    $('.navbar-nav .dropdown, .dropdown-submenu').off('mouseenter mouseleave click');
+    // 主選單
+    $('.navbar-nav .dropdown > a').off('click').on('click', function(e) {
+      var parentLi = $(this).parent();
+      var menu = parentLi.find('> .dropdown-menu');
+      if(menu.length){
+        e.preventDefault();
+        e.stopPropagation();
+        menu.toggleClass('show');
+        parentLi.toggleClass('show');
+      }
+    });
+    // 第二層
+    $('.dropdown-submenu > a').off('click').on('click', function(e) {
+      var parentLi = $(this).parent();
+      var menu = parentLi.find('> .sub-menu');
+      if(menu.length){
+        e.preventDefault();
+        e.stopPropagation();
+        menu.toggleClass('show');
+        parentLi.toggleClass('show');
+      }
+    });
+  }
+
+  // 控制切換
+  function initDropdownBehavior() {
+    if (isMobile()) {
+      enableMobileDropdown();
+      $(document).off('click.navclose').on('click.navclose', function(e){
+        if ($(e.target).closest('.navbar-nav .dropdown, .dropdown-menu, .sub-menu').length) {
+          return;
+        }
+        $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
+        $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
+      });
+    } else {
+      enableDesktopDropdown();
+      $(document).off('click.navclose');
+      // 桌機時全部先收合
+      $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
+      $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
+    }
+  }
+
+  // 切換寬度時自動清除殘留
+  let lastIsMobile = window.innerWidth <= 991;
+  $(document).ready(initDropdownBehavior);
+  $(window).on('resize', function(){
+    let nowIsMobile = window.innerWidth <= 991;
+    if (lastIsMobile !== nowIsMobile) {
+      $('.dropdown-menu.show, .sub-menu.show').removeClass('show');
+      $('.dropdown.show, .dropdown-submenu.show').removeClass('show');
+    }
+    lastIsMobile = nowIsMobile;
+    setTimeout(initDropdownBehavior, 150);
+  });
 
 })(jQuery);
