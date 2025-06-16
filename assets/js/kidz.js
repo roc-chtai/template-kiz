@@ -674,28 +674,42 @@ window.addEventListener('scroll', iconOnScroll);
 
   /*======== Google Analytics  ========*/
 
+$(document).on('click', '.navbar-nav .dropdown > a', function(e) {
+  if(window.innerWidth <= 991) {
+    var $parent = $(this).parent();
+    var $menu = $parent.find('> .dropdown-menu');
+    if($menu.length) {
+      e.preventDefault();
+      e.stopPropagation();
 
-  // 點擊展開下拉選單（含巢狀/第二層），手機平板都適用
-  function enableDropdownClick() {
-    // 主下拉（如 .dropdown）
-    $('.navbar-nav .dropdown > a').off('click').on('click', function(e) {
-      // 僅在螢幕 <= 991 px 時啟用
-      if(window.innerWidth <= 991) {
-        var $parent = $(this).parent();
-        var $menu = $parent.find('> .dropdown-menu');
-        if($menu.length) {
-          e.preventDefault();
-          e.stopPropagation();
-          // 關其他，展開自己
-          $('.dropdown-menu.show, .dropdown.show').removeClass('show');
-          $menu.toggleClass('show');
-          $parent.toggleClass('show');
-        }
-      }
-    });
-    // 巢狀下拉（如 .dropdown-submenu）
-    
+      // 收起所有打開的同級
+      $parent.siblings('.dropdown.show').removeClass('show')
+        .find('.dropdown-menu.show').removeClass('show');
+      // toggle自己
+      $menu.toggleClass('show');
+      $parent.toggleClass('show');
+    }
   }
+});
+
+$(document).on('click', '.dropdown-submenu > a', function(e) {
+  if(window.innerWidth <= 991) {
+    var $parent = $(this).parent();
+    var $menu = $parent.find('> .sub-menu');
+    if($menu.length) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 收起同級
+      $parent.siblings('.dropdown-submenu.show').removeClass('show')
+        .find('.sub-menu.show').removeClass('show');
+      // toggle自己
+      $menu.toggleClass('show');
+      $parent.toggleClass('show');
+    }
+  }
+});
+
 
   // 螢幕寬度有變化就全部收起
   $(window).on('resize', function(){
