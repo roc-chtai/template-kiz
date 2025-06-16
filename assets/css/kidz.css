@@ -17437,7 +17437,7 @@ input.focus {
   -khtml-opacity: 0;
   opacity: 0;
   transition: all 0.3s ease-in-out;
-  z-index: 1005;
+  z-index: 999;
   display: block;
 }
 
