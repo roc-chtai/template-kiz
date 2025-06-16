@@ -27,6 +27,13 @@ html, body {
   max-width: 100% !important;
   overflow-x: hidden !important;
 }
+
+  /* 強制禁止 hover 展開 */
+.dropdown:hover > .dropdown-menu,
+.nav-item:hover > .dropdown-menu,
+.dropdown-menu:hover {
+  display: none !important;
+}
 </style>
 
 
