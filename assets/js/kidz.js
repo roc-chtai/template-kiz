@@ -24,11 +24,11 @@
       }
       zero = st;
 
-      if(main_area.hasClass('navbar-sticky') && ( $(this).scrollTop() <= 600 || $(this).width() <= 300)){
+      if(main_area.hasClass('navbar-sticky') && ( $(this).scrollTop() <= 300 || $(this).width() <= 300)){
         main_area.removeClass('navbar-scrollUp');
         main_area.removeClass('navbar-sticky').appendTo(header_area);
         header_area.css('height', 'auto');
-      }else if( !main_area.hasClass('navbar-sticky') && $(this).width() > 300 && $(this).scrollTop() > 600 ){
+      }else if( !main_area.hasClass('navbar-sticky') && $(this).width() > 300 && $(this).scrollTop() > 300 ){
         header_area.css('height', header_area.height());
         main_area.addClass('navbar-scrollUp');
         main_area.css({'opacity': '0'}).addClass('navbar-sticky');
