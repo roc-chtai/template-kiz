@@ -640,7 +640,7 @@ function triggerBounce() {
 // 滾動事件 — debounce
 function iconOnScrollDebounce() {
   if (scrollTimer) clearTimeout(scrollTimer);
-  scrollTimer = setTimeout(triggerBounce, 100); 
+  scrollTimer = setTimeout(triggerBounce, 80); 
 }
 
 // 載入
