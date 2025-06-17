@@ -17035,8 +17035,14 @@ button:focus,
 #member-float {
   position: fixed;
   right: 20px;
-  bottom: 75px;
+  bottom: 25px;
   transition: bottom 0.16s ease;
+}
+/* 手機模式：瞬移（沒有transition） */
+@media (max-width: 767px) {
+  #member-float {
+    transition: none !important;
+  }
 }
 
 .icon-header {
