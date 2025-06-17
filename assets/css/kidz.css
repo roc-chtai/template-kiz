@@ -18742,4 +18742,42 @@ html[dir=rtl] .cart-dropdown .dropdown-menu-end {
 .sub-menu.show {
   display: block;
 }
+
+/* 最新考情左側灰線+icon樣式（只針對第一欄） */
+.dropdown-menu.row > .col-12.col-md-2:first-child {
+  position: relative;
+  padding-left: 36px; /* 要讓出空間給icon和灰線 */
+}
+.dropdown-menu.row > .col-12.col-md-2:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #dedede;
+  border-radius: 8px;
+  z-index: 0;
+}
+
+/* icon 黃底圓、置於灰線上方 */
+.dropdown-menu.row > .col-12.col-md-2:first-child .nav-icon {
+  background: #ffe7b9;
+  border-radius: 50%;
+  padding: 8px;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  margin-right: 8px;
+}
+
+/* 讓標題與icon垂直置中、字加粗 */
+.dropdown-menu.row > .col-12.col-md-2:first-child > ul > li:first-child {
+  font-weight: bold;
+  color: #c6a23a;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  font-size: 1.06em;
+}
 /*# sourceMappingURL=kidz.css.map */
