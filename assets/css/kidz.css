@@ -15528,14 +15528,15 @@ a {
   }
 }
 .dropdown-menu.row.show .list-unstyled:before {
-  position: absolute;
-  left: 0;
-  height: 60%;
-  top: 50%;
-  transform: translateY(-28%);
+ position: absolute;
+  left: 7px;
+  top: 40px;
+  bottom: 0;
   width: 3px;
-  background-color: #e7e7e7;
+  background-color: #dedede;
   content: "";
+  border-radius: 6px;
+  z-index: 0;
 }
 @media (min-width: 768px) {
   .dropdown-menu.row.show .list-unstyled:before {
