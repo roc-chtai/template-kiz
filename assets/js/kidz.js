@@ -657,55 +657,53 @@ window.addEventListener('scroll', iconOnScroll);
 
   /*======== Google Analytics  ========*/
 
-function isTouchDevice() {
-  return (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia('(pointer: coarse)').matches);
-}
 
-// 第一層點擊（手機或觸控桌機）
+// 支援手機/平板巢狀下拉（展開/收合，三層）
 $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
-  if(window.innerWidth <= 991 || isTouchDevice()) {
+  if(window.innerWidth <= 991) {
     var $parent = $(this).parent();
     var $menu = $parent.find('> .dropdown-menu');
     if($menu.length) {
       e.preventDefault();
       e.stopPropagation();
-      // 只收起同級，不影響自己的父層
-      $parent.siblings('.dropdown').removeClass('show').children('.dropdown-menu').removeClass('show');
+      // 收起同級
+      $parent.siblings('.dropdown.show').removeClass('show')
+        .find('.dropdown-menu.show').removeClass('show');
       $menu.toggleClass('show');
       $parent.toggleClass('show');
     }
   }
 });
 
-// 第二、三層點擊（手機或觸控桌機）
 $(document).on('click', '.dropdown-submenu > a', function(e) {
+  if(window.innerWidth <= 991) {
     var $parent = $(this).parent();
     var $menu = $parent.find('> .sub-menu');
     if($menu.length) {
       e.preventDefault();
       e.stopPropagation();
-      // 只收起同級，不收自己的父層
-      $parent.siblings('.dropdown-submenu').removeClass('show').children('.sub-menu').removeClass('show');
+      // 收起同級
+      $parent.siblings('.dropdown-submenu.show').removeClass('show')
+        .find('.sub-menu.show').removeClass('show');
       $menu.toggleClass('show');
       $parent.toggleClass('show');
     }
   }
 });
 
-// resize 時「所有」展開收回
+// 視窗變動時，所有展開收回（包括桌機下拉）
 $(window).on('resize', function(){
-  // 清掉所有 show，避免 RWD 切換位置亂掉
   $('.dropdown-menu.show, .dropdown.show, .sub-menu.show, .dropdown-submenu.show').removeClass('show');
   $('.navbar-collapse').removeClass('show').attr('style','');
   $('.navbar-toggler').attr('aria-expanded', 'false');
-  // 重新掛載 hover
-  enableDesktopDropdownHover();
 });
 
-// 桌機 hover 展開（非觸控才啟用）
+// 桌機 hover 展開下拉選單（巢狀也支援）
 function enableDesktopDropdownHover() {
-  if(window.innerWidth > 991 && !isTouchDevice()) {
-    $('.navbar-nav .dropdown').off('mouseenter mouseleave').hover(
+  if(window.innerWidth > 991) {
+    // 主 dropdown hover
+    $('.navbar-nav .dropdown').off('mouseenter mouseleave');
+    $('.navbar-nav .dropdown').hover(
       function() {
         $(this).addClass('show');
         $(this).find('> .dropdown-menu').addClass('show');
@@ -715,7 +713,9 @@ function enableDesktopDropdownHover() {
         $(this).find('> .dropdown-menu').removeClass('show');
       }
     );
-    $('.dropdown-submenu').off('mouseenter mouseleave').hover(
+    // 巢狀 dropdown-submenu hover
+    $('.dropdown-submenu').off('mouseenter mouseleave');
+    $('.dropdown-submenu').hover(
       function() {
         $(this).addClass('show');
         $(this).find('> .sub-menu').addClass('show');
@@ -725,13 +725,16 @@ function enableDesktopDropdownHover() {
         $(this).find('> .sub-menu').removeClass('show');
       }
     );
-  } else {
-    // 觸控裝置移除 hover
-    $('.navbar-nav .dropdown, .dropdown-submenu').off('mouseenter mouseleave');
   }
 }
 
-// 一進頁面就掛 hover
-$(document).ready(enableDesktopDropdownHover);
+// 螢幕寬度有變就重掛桌機 hover（避免手機回來桌機沒反應）
+$(window).on('resize', function(){
+  enableDesktopDropdownHover();
+});
+// 一進頁面就掛
+$(document).ready(function(){
+  enableDesktopDropdownHover();
+});
 
 })(jQuery);
