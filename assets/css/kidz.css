@@ -18759,3 +18759,11 @@ html[dir=rtl] .cart-dropdown .dropdown-menu-end {
   display: block;
 }
 
+@media (max-width: 991px) {
+  .dropdown-submenu > a > .fa-chevron-right {
+    margin-left: 7px; 
+    font-size: 0.7em;
+    display: inline-block !important;
+  }
+}
+
