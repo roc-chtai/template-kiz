@@ -660,7 +660,6 @@ window.addEventListener('scroll', iconOnScroll);
 
 // 支援手機/平板巢狀下拉（展開/收合，三層）
 $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
-  if(window.innerWidth <= 991) {
     var $parent = $(this).parent();
     var $menu = $parent.find('> .dropdown-menu');
     if($menu.length) {
@@ -671,12 +670,11 @@ $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
         .find('.dropdown-menu.show').removeClass('show');
       $menu.toggleClass('show');
       $parent.toggleClass('show');
-    }
+    
   }
 });
 
 $(document).on('click', '.dropdown-submenu > a', function(e) {
-  if(window.innerWidth <= 991) {
     var $parent = $(this).parent();
     var $menu = $parent.find('> .sub-menu');
     if($menu.length) {
@@ -687,7 +685,7 @@ $(document).on('click', '.dropdown-submenu > a', function(e) {
         .find('.sub-menu.show').removeClass('show');
       $menu.toggleClass('show');
       $parent.toggleClass('show');
-    }
+    
   }
 });
 
