@@ -611,46 +611,53 @@ function iconInitOnLoad() {
     memberBtn.style.bottom = '75px';
   }
 }
+// 1. 全域動畫狀態 flag
+var isAnimating = false;
 
-// 滾動時
+// 2. 滾動時觸發動畫（只允許動畫結束後才能再次觸發）
 function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
+  if (isAnimating) return; // 動畫進行中不重複觸發
+  isAnimating = true;
+  memberBtn.classList.remove('smooth-float');
+  void memberBtn.offsetWidth; // 強制重繪，確保動畫能重播
+  memberBtn.classList.add('smooth-float');
+}
+
+// 3. 初始化位置（只設 bottom，不加動畫）
+function iconInitOnLoad() {
+  var memberBtn = document.getElementById('member-float');
+  var backTop = document.getElementById('back-to-top');
+  if (!memberBtn) return;
 
   if (window.scrollY < 1) {
-    // 到頂端
-    memberBtn.classList.remove('bounce-loop');
-    void memberBtn.offsetWidth;
-    memberBtn.classList.add('bounce-loop');
-    setTimeout(function() {
-      memberBtn.classList.remove('bounce-loop');
-      memberBtn.style.bottom = '20px';
-    }, 360);
+    memberBtn.classList.remove('smooth-float');
+    memberBtn.style.bottom = '20px';
+    if (backTop) backTop.style.opacity = '0';
   } else {
-    // 離開頂端
-    memberBtn.classList.remove('bounce-loop');
+    memberBtn.classList.remove('smooth-float');
     memberBtn.style.bottom = '75px';
-    setTimeout(function() {
-      memberBtn.classList.remove('bounce-loop');
-      void memberBtn.offsetWidth;
-      memberBtn.classList.add('bounce-loop');
-    }, 160); // 等 bottom完再跳
   }
 }
 
+// 4. 只需監聽一次動畫結束事件
+document.addEventListener('DOMContentLoaded', function() {
+  var memberBtn = document.getElementById('member-float');
+  if (memberBtn) {
+    memberBtn.addEventListener('animationend', function() {
+      memberBtn.classList.remove('smooth-float');
+      isAnimating = false;
+    });
+  }
+});
 
-
-// 載入
+// 5. 正常掛載
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(iconInitOnLoad, 20);
 });
 window.addEventListener('load', iconInitOnLoad);
-
-// 滾動
 window.addEventListener('scroll', iconOnScroll);
-
-
-
 
   /*======== 11.Wow Js  ========*/
   new WOW().init();
