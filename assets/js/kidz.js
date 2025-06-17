@@ -595,7 +595,7 @@ $('.scrollup').click(function(){
 
 
 // 會員
-var isBouncing = false;
+var scrollTimer = null;
 
 function iconInitOnLoad() {
   var memberBtn = document.getElementById('member-float');
@@ -603,24 +603,19 @@ function iconInitOnLoad() {
   if (!memberBtn) return;
 
   if (window.scrollY < 1) {
-    // 頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
     if (backTop) backTop.style.opacity = '0';
   } else {
-    // 非頂端
     memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
   }
 }
 
-// 滾動時
-function iconOnScroll() {
+// 停止滾動時觸發動畫
+function triggerBounce() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
-  if (isBouncing) return; // 動畫進行中不再觸發
-  isBouncing = true;
-
   if (window.scrollY < 1) {
     // 到頂端
     memberBtn.classList.remove('bounce-loop');
@@ -629,7 +624,6 @@ function iconOnScroll() {
     setTimeout(function() {
       memberBtn.classList.remove('bounce-loop');
       memberBtn.style.bottom = '20px';
-      isBouncing = false; // 動畫播完解鎖
     }, 360);
   } else {
     // 離開頂端
@@ -639,9 +633,14 @@ function iconOnScroll() {
       memberBtn.classList.remove('bounce-loop');
       void memberBtn.offsetWidth;
       memberBtn.classList.add('bounce-loop');
-      isBouncing = false; // 動畫播完解鎖
-    }, 160); // 等 bottom完再跳
+    }, 160);
   }
+}
+
+// 滾動事件 — debounce
+function iconOnScrollDebounce() {
+  if (scrollTimer) clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(triggerBounce, 200); // 200ms 停止才觸發 bounce
 }
 
 // 載入
@@ -651,8 +650,7 @@ window.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('load', iconInitOnLoad);
 
 // 滾動
-window.addEventListener('scroll', iconOnScroll);
-
+window.addEventListener('scroll', iconOnScrollDebounce);
 
   /*======== 11.Wow Js  ========*/
   new WOW().init();
