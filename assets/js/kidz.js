@@ -594,53 +594,63 @@ $('.scrollup').click(function(){
 });
 
 
-// 會員動畫區
-var isAnimating = false;
-
-// 初始化位置（只設 bottom，不加動畫）
+// 會員
 function iconInitOnLoad() {
   var memberBtn = document.getElementById('member-float');
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
   if (window.scrollY < 1) {
-    memberBtn.classList.remove('smooth-float');
+    // 頂端
+    memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '20px';
     if (backTop) backTop.style.opacity = '0';
   } else {
-    memberBtn.classList.remove('smooth-float');
+    // 非頂端
+    memberBtn.classList.remove('bounce-loop');
     memberBtn.style.bottom = '75px';
   }
 }
 
-// 滾動時觸發動畫
+// 滾動時
 function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
-  if (isAnimating) return; // 動畫進行中不重複觸發
-  isAnimating = true;
-  memberBtn.classList.remove('smooth-float');
-  void memberBtn.offsetWidth; // 動畫重播
-  memberBtn.classList.add('smooth-float');
+
+  if (window.scrollY < 1) {
+    // 到頂端
+    memberBtn.classList.remove('bounce-loop');
+    void memberBtn.offsetWidth;
+    memberBtn.classList.add('bounce-loop');
+    setTimeout(function() {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '20px';
+    }, 360);
+  } else {
+    // 離開頂端
+    memberBtn.classList.remove('bounce-loop');
+    memberBtn.style.bottom = '75px';
+    setTimeout(function() {
+      memberBtn.classList.remove('bounce-loop');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce-loop');
+    }, 160); // 等 bottom完再跳
+  }
 }
 
-// 監聽
-document.addEventListener('DOMContentLoaded', function() {
-  var memberBtn = document.getElementById('member-float');
-  if (memberBtn) {
-    memberBtn.addEventListener('animationend', function() {
-      memberBtn.classList.remove('smooth-float');
-      isAnimating = false;
-    });
-  }
-});
 
-// 初始化掛載
+
+// 載入
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(iconInitOnLoad, 20);
 });
 window.addEventListener('load', iconInitOnLoad);
+
+// 滾動
 window.addEventListener('scroll', iconOnScroll);
+
+
+
 
   /*======== 11.Wow Js  ========*/
   new WOW().init();
@@ -648,6 +658,7 @@ window.addEventListener('scroll', iconOnScroll);
   /*======== Google Analytics  ========*/
 
 function enableDropdownEvents() {
+  // 先清掉所有 hover/click
   $('.navbar-nav .dropdown').off('mouseenter mouseleave click');
   $('.dropdown-submenu').off('mouseenter mouseleave click');
 
@@ -724,7 +735,7 @@ function enableDropdownEvents() {
   }
 }
 
-// resize 收回所有 show
+// resize 時重掛事件並收回所有 show
 $(window).on('resize', function(){
   enableDropdownEvents();
   $('.dropdown-menu.show, .dropdown.show, .sub-menu.show, .dropdown-submenu.show').removeClass('show');
