@@ -679,7 +679,6 @@ $(document).on('click', '.navbar-nav .dropdown > a', function(e) {
 
 // 第二、三層點擊（手機或觸控桌機）
 $(document).on('click', '.dropdown-submenu > a', function(e) {
-  if(window.innerWidth <= 991 || isTouchDevice()) {
     var $parent = $(this).parent();
     var $menu = $parent.find('> .sub-menu');
     if($menu.length) {
