@@ -594,54 +594,37 @@ $('.scrollup').click(function(){
 });
 
 
-// 會員
+// 會員動畫區
+var isAnimating = false;
+
+// 初始化位置（只設 bottom，不加動畫）
 function iconInitOnLoad() {
   var memberBtn = document.getElementById('member-float');
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
 
   if (window.scrollY < 1) {
-    // 頂端
-    memberBtn.classList.remove('bounce-loop');
+    memberBtn.classList.remove('smooth-float');
     memberBtn.style.bottom = '20px';
     if (backTop) backTop.style.opacity = '0';
   } else {
-    // 非頂端
-    memberBtn.classList.remove('bounce-loop');
+    memberBtn.classList.remove('smooth-float');
     memberBtn.style.bottom = '75px';
   }
 }
-// 1. 全域動畫狀態 flag
-var isAnimating = false;
 
-// 2. 滾動時觸發動畫（只允許動畫結束後才能再次觸發）
+// 滾動時觸發動畫
 function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
   if (isAnimating) return; // 動畫進行中不重複觸發
   isAnimating = true;
   memberBtn.classList.remove('smooth-float');
-  void memberBtn.offsetWidth; // 強制重繪，確保動畫能重播
+  void memberBtn.offsetWidth; // 動畫重播
   memberBtn.classList.add('smooth-float');
 }
 
-// 3. 初始化位置（只設 bottom，不加動畫）
-function iconInitOnLoad() {
-  var memberBtn = document.getElementById('member-float');
-  var backTop = document.getElementById('back-to-top');
-  if (!memberBtn) return;
-
-  if (window.scrollY < 1) {
-    memberBtn.classList.remove('smooth-float');
-    memberBtn.style.bottom = '20px';
-    if (backTop) backTop.style.opacity = '0';
-  } else {
-    memberBtn.classList.remove('smooth-float');
-    memberBtn.style.bottom = '75px';
-  }
-}
-
-// 4. 只需監聽一次動畫結束事件
+// 監聽
 document.addEventListener('DOMContentLoaded', function() {
   var memberBtn = document.getElementById('member-float');
   if (memberBtn) {
@@ -652,7 +635,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 5. 正常掛載
+// 初始化掛載
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(iconInitOnLoad, 20);
 });
@@ -665,7 +648,6 @@ window.addEventListener('scroll', iconOnScroll);
   /*======== Google Analytics  ========*/
 
 function enableDropdownEvents() {
-  // 先清掉所有 hover/click
   $('.navbar-nav .dropdown').off('mouseenter mouseleave click');
   $('.dropdown-submenu').off('mouseenter mouseleave click');
 
@@ -742,7 +724,7 @@ function enableDropdownEvents() {
   }
 }
 
-// resize 時重掛事件並收回所有 show
+// resize 收回所有 show
 $(window).on('resize', function(){
   enableDropdownEvents();
   $('.dropdown-menu.show, .dropdown.show, .sub-menu.show, .dropdown-submenu.show').removeClass('show');
