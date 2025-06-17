@@ -595,62 +595,91 @@ $('.scrollup').click(function(){
 
 
 // 會員
-var scrollTimer = null;
+function isMobile() {
+  return window.innerWidth < 768;
+}
 
 function iconInitOnLoad() {
   var memberBtn = document.getElementById('member-float');
   var backTop = document.getElementById('back-to-top');
   if (!memberBtn) return;
-
-  if (window.scrollY < 1) {
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '20px';
-    if (backTop) backTop.style.opacity = '0';
+  if (isMobile()) {
+    // 手機：瞬移
+    if (window.scrollY < 1) {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '25px';
+      if (backTop) backTop.style.opacity = '0';
+    } else {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '75px';
+    }
   } else {
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '75px';
+    // 桌機：有transition
+    if (window.scrollY < 1) {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '20px';
+      if (backTop) backTop.style.opacity = '0';
+    } else {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '75px';
+    }
   }
 }
 
-// 停止滾動時觸發動畫
-function triggerBounce() {
+function iconOnScroll() {
   var memberBtn = document.getElementById('member-float');
   if (!memberBtn) return;
-  if (window.scrollY < 1) {
-    // 到頂端
-    memberBtn.classList.remove('bounce-loop');
-    void memberBtn.offsetWidth;
-    memberBtn.classList.add('bounce-loop');
-    setTimeout(function() {
-      memberBtn.classList.remove('bounce-loop');
-      memberBtn.style.bottom = '20px';
-    }, 360);
-  } else {
-    // 離開頂端
-    memberBtn.classList.remove('bounce-loop');
-    memberBtn.style.bottom = '75px';
-    setTimeout(function() {
+  if (isMobile()) {
+    // 手機：瞬移
+    if (window.scrollY < 1) {
       memberBtn.classList.remove('bounce-loop');
       void memberBtn.offsetWidth;
       memberBtn.classList.add('bounce-loop');
-    }, 160);
+      setTimeout(function() {
+        memberBtn.classList.remove('bounce-loop');
+        memberBtn.style.bottom = '25px';
+      }, 360);
+    } else {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '75px';
+      setTimeout(function() {
+        memberBtn.classList.remove('bounce-loop');
+        void memberBtn.offsetWidth;
+        memberBtn.classList.add('bounce-loop');
+      }, 0);
+    }
+  } else {
+    // 桌機：有transition
+    if (window.scrollY < 1) {
+      memberBtn.classList.remove('bounce-loop');
+      void memberBtn.offsetWidth;
+      memberBtn.classList.add('bounce-loop');
+      setTimeout(function() {
+        memberBtn.classList.remove('bounce-loop');
+        memberBtn.style.bottom = '20px';
+      }, 360);
+    } else {
+      memberBtn.classList.remove('bounce-loop');
+      memberBtn.style.bottom = '75px';
+      setTimeout(function() {
+        memberBtn.classList.remove('bounce-loop');
+        void memberBtn.offsetWidth;
+        memberBtn.classList.add('bounce-loop');
+      }, 160);
+    }
   }
 }
 
-// 滾動事件 — debounce
-function iconOnScrollDebounce() {
-  if (scrollTimer) clearTimeout(scrollTimer);
-  scrollTimer = setTimeout(triggerBounce, 80); 
-}
+// 監聽 resize（手機/桌機切換即時生效）
+window.addEventListener('resize', iconInitOnLoad);
 
 // 載入
 window.addEventListener('DOMContentLoaded', function() {
   setTimeout(iconInitOnLoad, 20);
 });
 window.addEventListener('load', iconInitOnLoad);
-
 // 滾動
-window.addEventListener('scroll', iconOnScrollDebounce);
+window.addEventListener('scroll', iconOnScroll);
 
   /*======== 11.Wow Js  ========*/
   new WOW().init();
